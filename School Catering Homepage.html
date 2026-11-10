@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Low-fidelity school catering homepage wireframe." />
+  <title>School Catering — Homepage Wireframe</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #ffffff;
+      --surface: #f4f4f4;
+      --surface-2: #ececec;
+      --line: #d2d2d2;
+      --text: #282828;
+      --muted: #686868;
+      --white: #fff;
+      --radius: 4px;
+      --container: 1120px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 Arial, Helvetica, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    img { max-width: 100%; }
+    :focus-visible { outline: 3px solid #777; outline-offset: 3px; }
+    .container { width: min(calc(100% - 40px), var(--container)); margin-inline: auto; }
+    .section { padding: 76px 0; scroll-margin-top: 90px; }
+    .section--gray { background: var(--surface); }
+    .section-heading { text-align: center; margin: 0 auto 36px; max-width: 620px; }
+    .eyebrow { margin: 0 0 8px; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: clamp(2.1rem, 4vw, 3.4rem); line-height: 1.12; letter-spacing: -.04em; margin-bottom: 20px; }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.2; letter-spacing: -.025em; margin-bottom: 12px; }
+    h3 { font-size: 1.1rem; line-height: 1.3; margin-bottom: 10px; }
+    p { color: var(--muted); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 10px 20px; border: 1px solid var(--text); background: var(--text); color: var(--white); font-size: .9rem; font-weight: 700; border-radius: var(--radius); transition: background .2s, color .2s; }
+    .btn:hover { background: #555; }
+    .btn--outline { background: transparent; color: var(--text); }
+    .btn--outline:hover { background: var(--surface-2); }
+    .btn--small { min-height: 40px; padding: 8px 16px; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    /* Header */
+    .site-header { position: sticky; top: 0; z-index: 10; background: var(--white); border-bottom: 1px solid var(--line); }
+    .header-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo { display: inline-flex; align-items: center; justify-content: center; border: 2px solid var(--text); padding: 7px 14px; font-weight: 800; font-size: 1rem; letter-spacing: -.02em; white-space: nowrap; }
+    .primary-nav { display: flex; align-items: center; gap: 30px; }
+    .primary-nav a { font-size: .91rem; font-weight: 600; }
+    .primary-nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 5px; }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: var(--white); padding: 9px 11px; border-radius: var(--radius); }
+    .menu-toggle span { display: block; height: 2px; width: 23px; margin: 4px 0; background: var(--text); }
+
+    /* Hero */
+    .hero { padding: 88px 0; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 70px; }
+    .hero-copy { max-width: 520px; }
+    .hero-copy > p { font-size: 1.07rem; max-width: 460px; margin-bottom: 28px; }
+    .image-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 11px; background: var(--surface-2); border: 1px dashed #aaa; color: var(--muted); text-align: center; font-size: .85rem; }
+    .hero-image { min-height: 420px; }
+    .placeholder-icon { display: block; width: 54px; height: 43px; border: 2px solid #aaa; border-radius: 3px; position: relative; overflow: hidden; }
+    .placeholder-icon::before { content: ''; position: absolute; width: 12px; height: 12px; left: 7px; top: 7px; border: 2px solid #aaa; border-radius: 50%; }
+    .placeholder-icon::after { content: ''; position: absolute; width: 36px; height: 36px; transform: rotate(45deg); border: 2px solid #aaa; left: 16px; top: 22px; }
+
+    /* Feature, menu, process & testimonial cards */
+    .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .card { padding: 28px; border: 1px solid var(--line); background: var(--white); border-radius: var(--radius); }
+    .feature-card { text-align: center; }
+    .feature-card p, .process-card p { margin-bottom: 0; font-size: .92rem; }
+    .icon-placeholder { width: 60px; height: 60px; background: var(--surface-2); border: 1px dashed #aaa; margin: 0 auto 22px; display: grid; place-items: center; font-size: .74rem; color: var(--muted); }
+    .menu-card { padding: 0; overflow: hidden; }
+    .menu-image { height: 190px; border: 0; border-bottom: 1px dashed #aaa; }
+    .menu-content { padding: 24px; }
+    .menu-content p { font-size: .9rem; }
+    .detail-placeholder { width: 72px; height: 16px; background: var(--surface-2); border-radius: 2px; }
+    .section-action { margin-top: 32px; text-align: center; }
+    .process-card { text-align: center; padding: 16px 12px; }
+    .step-number { width: 60px; height: 60px; display: grid; place-items: center; margin: 0 auto 23px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 50%; font-size: 1.1rem; font-weight: 700; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .testimonial { padding: 32px; }
+    .quote-mark { font-size: 3rem; line-height: 1; color: #aaa; height: 38px; }
+    .testimonial blockquote { margin: 8px 0 20px; font-size: 1rem; line-height: 1.7; }
+    .testimonial cite { color: var(--muted); font-size: .86rem; font-style: normal; }
+
+    /* CTA and prototype form */
+    .cta-panel { border: 1px solid var(--line); background: var(--surface); padding: 50px; display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: start; }
+    .cta-panel p { max-width: 360px; }
+    .form { display: grid; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form label { display: grid; gap: 6px; font-size: .86rem; font-weight: 700; }
+    .form input, .form textarea { width: 100%; padding: 12px; background: var(--white); border: 1px solid #bcbcbc; border-radius: var(--radius); color: var(--text); }
+    .form textarea { resize: vertical; min-height: 92px; }
+    .form .btn { justify-self: start; }
+    .form-note, .form-status { font-size: .76rem; margin: 0; }
+    .form-status { color: var(--text); font-weight: 700; }
+
+    /* Footer */
+    .site-footer { background: var(--surface); padding: 55px 0 20px; border-top: 1px solid var(--line); }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 42px; }
+    .footer-grid p, .footer-grid a, .footer-grid li { font-size: .86rem; }
+    .footer-grid h3 { font-size: .9rem; margin: 0 0 14px; }
+    .footer-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+    .footer-grid a:hover { text-decoration: underline; }
+    .footer-brand p { margin-top: 15px; max-width: 270px; }
+    .social-placeholder { display: flex; gap: 8px; margin-top: 10px; }
+    .social-placeholder span { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid #bbb; color: var(--muted); font-size: .68rem; }
+    .copyright { padding-top: 18px; border-top: 1px solid var(--line); font-size: .78rem; color: var(--muted); }
+
+    @media (max-width: 900px) {
+      .hero-grid { gap: 35px; }
+      .primary-nav { gap: 15px; }
+      .primary-nav a { font-size: .84rem; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-panel { gap: 30px; padding: 34px; }
+    }
+    @media (max-width: 700px) {
+      .section { padding: 56px 0; }
+      .header-inner { min-height: 68px; }
+      .menu-toggle { display: block; }
+      .primary-nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; padding: 18px 20px 24px; border-bottom: 1px solid var(--line); background: var(--white); box-shadow: 0 10px 20px #0000000a; flex-direction: column; align-items: stretch; gap: 18px; }
+      .primary-nav.is-open { display: flex; }
+      .primary-nav .btn { align-self: stretch; }
+      .hero { padding: 54px 0; }
+      .hero-grid, .cta-panel { grid-template-columns: 1fr; }
+      .hero-image { min-height: 275px; }
+      .card-grid, .testimonial-grid { grid-template-columns: 1fr; }
+      .card-grid { gap: 16px; }
+      .process-card { padding: 8px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 420px) {
+      .container { width: min(calc(100% - 28px), var(--container)); }
+      .button-row { flex-direction: column; }
+      .button-row .btn { width: 100%; }
+      .cta-panel { padding: 23px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Low-fidelity design: placeholders deliberately represent future imagery, icons and brand assets. -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="School Catering home">[ LOGO ]</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-controls="primaryNav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="primary-nav" id="primaryNav" aria-label="Main navigation">
+        <a href="#top">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#menu">Our Menu</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn--small">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">School Catering Service</p>
+          <h1 id="hero-title">Healthy Meals for Happy Students</h1>
+          <p>Providing nutritious, delicious, and reliable catering services for schools.</p>
+          <div class="button-row">
+            <a class="btn" href="#menu">Explore Our Menu</a>
+            <a class="btn btn--outline" href="#contact">Contact Us</a>
+          </div>
+        </div>
+        <div class="image-placeholder hero-image" role="img" aria-label="Placeholder for a school lunch photograph">
+          <span class="placeholder-icon" aria-hidden="true"></span>
+          <span>School Lunch Image Placeholder</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--gray" id="about" aria-labelledby="benefits-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Our Benefits</p>
+          <h2 id="benefits-title">Why Choose Us?</h2>
+          <p>Simple, thoughtful catering to support students throughout the school day.</p>
+        </div>
+        <div class="card-grid">
+          <article class="card feature-card">
+            <div class="icon-placeholder" aria-hidden="true">ICON</div>
+            <h3>Nutritious Meals</h3>
+            <p>Balanced meal options for growing students.</p>
+          </article>
+          <article class="card feature-card">
+            <div class="icon-placeholder" aria-hidden="true">ICON</div>
+            <h3>Fresh Ingredients</h3>
+            <p>Quality ingredients prepared with care every day.</p>
+          </article>
+          <article class="card feature-card">
+            <div class="icon-placeholder" aria-hidden="true">ICON</div>
+            <h3>Reliable Delivery</h3>
+            <p>Convenient school meals delivered on schedule.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Meal Preview</p>
+          <h2 id="menu-title">Explore Our Weekly Menu</h2>
+          <p>Here is a sample of the meal choices students can enjoy.</p>
+        </div>
+        <div class="card-grid">
+          <article class="card menu-card">
+            <div class="image-placeholder menu-image" role="img" aria-label="Meal 1 image placeholder"><span class="placeholder-icon" aria-hidden="true"></span><span>Meal Image</span></div>
+            <div class="menu-content"><h3>Meal Option 01</h3><p>Short description of the main dish, sides, and nutritious ingredients.</p><div class="detail-placeholder" aria-label="Meal detail placeholder"></div></div>
+          </article>
+          <article class="card menu-card">
+            <div class="image-placeholder menu-image" role="img" aria-label="Meal 2 image placeholder"><span class="placeholder-icon" aria-hidden="true"></span><span>Meal Image</span></div>
+            <div class="menu-content"><h3>Meal Option 02</h3><p>Short description of the main dish, sides, and nutritious ingredients.</p><div class="detail-placeholder" aria-label="Meal detail placeholder"></div></div>
+          </article>
+          <article class="card menu-card">
+            <div class="image-placeholder menu-image" role="img" aria-label="Meal 3 image placeholder"><span class="placeholder-icon" aria-hidden="true"></span><span>Meal Image</span></div>
+            <div class="menu-content"><h3>Meal Option 03</h3><p>Short description of the main dish, sides, and nutritious ingredients.</p><div class="detail-placeholder" aria-label="Meal detail placeholder"></div></div>
+          </article>
+        </div>
+        <div class="section-action"><a class="btn btn--outline" href="#contact">Ask for the Full Menu</a></div>
+      </div>
+    </section>
+
+    <section class="section section--gray" id="how-it-works" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Simple Process</p>
+          <h2 id="process-title">How It Works</h2>
+          <p>Three easy steps to start your school catering plan.</p>
+        </div>
+        <div class="card-grid">
+          <article class="process-card"><div class="step-number" aria-hidden="true">01</div><h3>Explore Menus</h3><p>Browse the available meal options.</p></article>
+          <article class="process-card"><div class="step-number" aria-hidden="true">02</div><h3>Choose Your Plan</h3><p>Select a catering solution for your school.</p></article>
+          <article class="process-card"><div class="step-number" aria-hidden="true">03</div><h3>Enjoy Fresh Meals</h3><p>Receive prepared meals at school.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Testimonials</p>
+          <h2 id="testimonials-title">What Schools Say</h2>
+          <p>Placeholder quotes to be replaced with real feedback.</p>
+        </div>
+        <div class="testimonial-grid">
+          <article class="card testimonial"><div class="quote-mark" aria-hidden="true">“</div><blockquote>[Insert a short testimonial from a school administrator or parent here.]</blockquote><cite>— Customer Name, School Name</cite></article>
+          <article class="card testimonial"><div class="quote-mark" aria-hidden="true">“</div><blockquote>[Insert a short testimonial about meal quality and delivery service here.]</blockquote><cite>— Customer Name, School Name</cite></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-panel">
+          <div>
+            <p class="eyebrow">Let's Talk</p>
+            <h2 id="cta-title">Let's Make School Lunch Better</h2>
+            <p>Discover a catering solution that suits your school. Tell us a little about what you need.</p>
+          </div>
+          <form class="form" id="contactForm">
+            <div class="form-row">
+              <label>Your Name<input name="name" type="text" placeholder="Full name" autocomplete="name" required /></label>
+              <label>School Name<input name="school" type="text" placeholder="School name" required /></label>
+            </div>
+            <label>Email Address<input name="email" type="email" placeholder="your@email.com" autocomplete="email" required /></label>
+            <label>Message<textarea name="message" placeholder="Tell us about your catering needs..."></textarea></label>
+            <button type="submit" class="btn">Request a Consultation</button>
+            <p class="form-note">Prototype only: this form does not send or save information.</p>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a class="logo" href="#top">[ LOGO ]</a><p>Nutritious and convenient catering solutions for schools.</p></div>
+        <div><h3>Quick Links</h3><ul><li><a href="#top">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#menu">Our Menu</a></li><li><a href="#how-it-works">How It Works</a></li></ul></div>
+        <div><h3>Contact</h3><ul><li>[Email Placeholder]</li><li>[Phone Placeholder]</li><li>[Address Placeholder]</li><li><a href="#contact">Contact Form</a></li></ul></div>
+        <div><h3>Social Media</h3><p>[Social links placeholder]</p><div class="social-placeholder" aria-hidden="true"><span>S1</span><span>S2</span><span>S3</span></div></div>
+      </div>
+      <div class="copyright">© <span id="year">2026</span> School Catering. Low-Fidelity Wireframe — Demo Content.</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const primaryNav = document.getElementById('primaryNav');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = primaryNav.classList.toggle('is-open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    });
+    primaryNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      primaryNav.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Open navigation');
+    }));
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const status = document.getElementById('formStatus');
+      status.hidden = false;
+      status.textContent = 'Prototype only — your message has not been sent. Connect a form service or backend to enable submissions.';
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
